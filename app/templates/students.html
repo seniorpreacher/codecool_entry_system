@@ -11,11 +11,15 @@
         <th>{{title}}</th>
         {% endfor %}
     </tr></thead>
-    {% for event in events %}
+    {% for student in students %}
     <tr>
-        <td>{{event.time.strftime("%Y-%m-%d %H:%M")}}</td>
-        <td>{{event.student.name}}</td>
-        <td>{{event.student.rfid_id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.rfid_id}}</td>
+        {% if student.last_seen is equalto None %}
+            <td></td>
+        {% else %}
+            <td>{{student.last_seen.strftime("%Y-%m-%d %H:%M")}}</td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table></div>

@@ -2,7 +2,7 @@ from flask_wtf import Form
 from wtforms import TextField, PasswordField
 from wtforms.validators import Required, Email, EqualTo
 from peewee import *
-from app.mod_auth.models import Visitor
+from app.mod_auth.models import Admin
 import wtforms
 
 
@@ -20,7 +20,7 @@ class LoginForm(Form):
         if not rv:
             return False
         try:
-            user = Visitor.get(name=self.name.data)
+            user = Admin.get(name=self.name.data)
         except DoesNotExist:
             self.name.errors.append('Unknown username')
             return False

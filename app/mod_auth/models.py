@@ -10,7 +10,7 @@ class BaseModel(Model):
         database = db
 
 
-class Visitor(BaseModel):
+class Admin(BaseModel):
     name = CharField()
     password = CharField()
 
