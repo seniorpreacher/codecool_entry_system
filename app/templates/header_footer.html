@@ -33,9 +33,17 @@
 
     <div class="collapse navbar-collapse" id="myNavbar">
 
-        <a href="#">
+        <a href="{{ url_for('rfid.index', _external=True) }}">
             <button name="applicants" class="btn btn-primary navbar-btn" data-toggle="tooltip" title="List applicants">
-                Entries Today
+                Latest Entries
+            </button>
+        </a>
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+        <a href="{{ url_for('rfid.student_list', _external=True) }}">
+            <button name="applicants" class="btn btn-primary navbar-btn" data-toggle="tooltip" title="List applicants">
+                Student List
             </button>
         </a>
 

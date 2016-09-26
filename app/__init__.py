@@ -16,8 +16,8 @@ students = [
     ]
 
 db.connect()
-db.drop_tables([Admin, Student], safe=True)
-db.create_tables([Admin, Student], safe=True)
+db.drop_tables([Admin, Student, Reads], safe=True)
+db.create_tables([Admin, Student, Reads], safe=True)
 
 
 with db.atomic():
