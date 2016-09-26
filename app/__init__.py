@@ -2,6 +2,7 @@
 from flask import Flask, render_template
 import sqlite3
 from peewee import *
+from flask_login import LoginManager
 
 db = SqliteDatabase('users.db')
 
@@ -27,6 +28,8 @@ with db.atomic():
 
 app = Flask(__name__)
 app.config.from_object('config')
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 @app.errorhandler(404)

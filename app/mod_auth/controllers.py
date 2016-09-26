@@ -3,6 +3,7 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 from app.mod_auth.forms import LoginForm
 from app.mod_auth.models import Admin
+# from flask_wtf import login_required
 
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -18,3 +19,8 @@ def signin():
         return redirect(url_for('rfid.index', _external=True))
 
     return render_template("auth/signin.html", form=form)
+
+
+@mod_auth.route("/logout")
+def logout():
+    return redirect(url_for('.signin'))
