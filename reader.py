@@ -57,14 +57,13 @@ class Device():
     def handle_new_entries(cls, tag):
         try:
             student = Student.get(Student.rfid_id == tag)
-            print(student.name)
-            Reads.create(time=datetime.datetime.now(), student=student)
-            for read in Reads.select():
-                print(read.time)
-                print(read.student.name)
+            student.last_seen = datetime.datetime.now()
+            student.save()
+
         except DoesNotExist:
-            pass
-        # Reads.create()
-        # print(tag)
+            student = Student.get(Student.name == "Unknown RFID ID")
+
+        finally:
+            Reads.create(time=datetime.datetime.now(), student=student)
 
 Device.run()
