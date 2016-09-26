@@ -13,9 +13,9 @@
     </tr></thead>
     {% for event in events %}
     <tr>
-        <td>{{event.event}}</td>
-        <td>{{event.name}}</td>
-        <td>{{event.rfid_id}}</td>
+        <td>{{event.time}}</td>
+        <td>{{event.student.name}}</td>
+        <td>{{event.student.rfid_id}}</td>
     </tr>
     {% endfor %}
 </table></div>

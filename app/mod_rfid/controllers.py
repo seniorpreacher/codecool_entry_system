@@ -8,10 +8,10 @@ mod_rfid = Blueprint('rfid', __name__, url_prefix='/rfid')
 @mod_rfid.route('/')
 def index():
     events = Reads.select()
-    for event in Reads.select():
-        print(event.event)
-        print(event.name)
-        print(event.rfid_id)
+    # for event in Reads.select():
+    #     print(event.event)
+    #     print(event.name)
+    #     print(event.rfid_id)
     titles = ["Time", "Name", "RFID ID"]
     return render_template("index.html", events=events, titles=titles)
 

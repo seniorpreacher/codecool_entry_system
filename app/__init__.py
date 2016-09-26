@@ -12,7 +12,7 @@ users = [{"name": "admin", "password": "admin"}]
 students = [
     {"name": "Al", "rfid_id": "egy"}, {"name": "Peggy", "rfid_id": "kettő"},
     {"name": "Kelly", "rfid_id": "három"}, {"name": "Bud", "rfid_id": "négy"},
-    {"name": "Bruno", "rfid_id": "öt"}
+    {"name": "Bruno", "rfid_id": "öt"}, {"name": "Marcy D'Arcy", "rfid_id": "0269792673"}
     ]
 
 db.connect()

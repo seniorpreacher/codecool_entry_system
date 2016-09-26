@@ -1,6 +1,7 @@
 import evdev
 from evdev import categorize, ecodes
 from app.mod_rfid.models import Student, Reads
+import datetime
 
 
 class Device():
@@ -42,10 +43,7 @@ class Device():
                         if digit == 'KEY_ENTER':
                             # create and dump the tag
                             tag = "".join(i.strip('KEY_') for i in container)
-                            for student in Student.select():
-                                print(student.name)
-                            print("Printing tag:")
-                            print(tag)
+                            cls.handle_new_entries(tag)
                             container = []
                         else:
                             container.append(digit)
@@ -54,5 +52,19 @@ class Device():
             # catch all exceptions to be able release the device
             device.ungrab()
             print('Quitting.')
+
+    @classmethod
+    def handle_new_entries(cls, tag):
+        try:
+            student = Student.get(Student.rfid_id == tag)
+            print(student.name)
+            Reads.create(time=datetime.datetime.now(), student=student)
+            for read in Reads.select():
+                print(read.time)
+                print(read.student.name)
+        except DoesNotExist:
+            pass
+        # Reads.create()
+        # print(tag)
 
 Device.run()

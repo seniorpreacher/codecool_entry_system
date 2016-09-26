@@ -12,11 +12,11 @@ class BaseModel(Model):
 class Student(BaseModel):
 
     name = CharField()
-    rfid_id = CharField()
+    rfid_id = CharField(null=True)
     last_seen = DateTimeField(null=True)
 
 
 class Reads(BaseModel):
 
-    event = DateTimeField()
+    time = DateTimeField()
     student = ForeignKeyField(Student)
