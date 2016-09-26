@@ -15,6 +15,6 @@ def signin():
     if form.validate_on_submit():
         flash(u'Successfully logged in as %s' % form.user.name)
         session['user_id'] = form.user.id
-        return render_template('index.html')
+        return redirect(url_for('rfid.index', _external=True))
 
     return render_template("auth/signin.html", form=form)

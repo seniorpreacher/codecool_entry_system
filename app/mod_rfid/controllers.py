@@ -10,5 +10,3 @@ def index():
     students = Student.select()
     titles = ["Name", "RFID ID", "Last Seen"]
     return render_template("index.html", students=students, titles=titles)
-
-    return render_template('index.html')

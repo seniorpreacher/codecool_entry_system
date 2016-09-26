@@ -20,7 +20,7 @@ class LoginForm(Form):
         if not rv:
             return False
         try:
-            user = Visitor.get(name=self.name.data)
+            user = Admin.get(name=self.name.data)
         except DoesNotExist:
             self.name.errors.append('Unknown username')
             return False
