@@ -15,7 +15,11 @@
     <tr>
         <td>{{student.name}}</td>
         <td>{{student.rfid_id}}</td>
-        <td>{{student.last_seen}}</td>
+        {% if student.last_seen is equalto None %}
+            <td></td>
+        {% else %}
+            <td>{{student.last_seen.strftime("%Y-%m-%d %H:%M")}}</td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table></div>

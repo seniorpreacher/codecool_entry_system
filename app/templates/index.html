@@ -13,7 +13,7 @@
     </tr></thead>
     {% for event in events %}
     <tr>
-        <td>{{event.time}}</td>
+        <td>{{event.time.strftime("%Y-%m-%d %H:%M")}}</td>
         <td>{{event.student.name}}</td>
         <td>{{event.student.rfid_id}}</td>
     </tr>
