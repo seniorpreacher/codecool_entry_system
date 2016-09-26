@@ -14,3 +14,9 @@ class Student(BaseModel):
     name = CharField()
     rfid_id = CharField()
     last_seen = DateTimeField(null=True)
+
+
+class Reads(BaseModel):
+
+    event = DateTimeField()
+    student = ForeignKeyField(Student)
