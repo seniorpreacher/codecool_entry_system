@@ -1,0 +1,78 @@
+<!-------------------------------------------------------------------------------------------------------------------->
+
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+{% extends "bare.html" %}
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+{% block title %}Index{% endblock title %}
+{% block head %}
+    {{ super() }}
+    <!-- <link href="signin.css" rel="stylesheet"> -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock head %}
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+{% block content %}
+
+<!-------------------------------------------------------------------------------------------------------------------->
+<div>
+<div class="container">
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+    {% if errors %}
+    <div>
+    {% for error in errors %}
+    {{ error }}<br>
+    {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% if form.errors %}
+    <div>
+    {% for field, error in form.errors.items() %}
+    {% for e in error %}
+    {{ e }}<br>
+    {% endfor %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+    <form class="form-signin" method="POST" action="." accept-charset="UTF-8" role="form">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {{ form.csrf_token }}
+        {{ render_field(form.name, placeholder="Username", autofocus="") }}
+        {{ render_field(form.password, placeholder="Password") }}
+
+    <div>
+        <label><input type="checkbox" name="remember" value="1"> Remember Me</label>
+        <a role="button" href="">Forgot your password?</a><span class="clearfix"></span>
+    </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign in</button>
+    </form>
+
+<!-------------------------------------------------------------------------------------------------------------------->
+
+</div>
+</div>
+{% endblock content %}

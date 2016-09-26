@@ -1,0 +1,27 @@
+{% extends "header_footer.html" %}
+{% block title %}Index{% endblock title %}
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+
+{% block content %}
+<div class="container-fluid"><table class="table table-bordered table-striped table-hover">
+    <thead><tr>
+        {% for title in titles %}
+        <th>{{title}}</th>
+        {% endfor %}
+    </tr></thead>
+    {% for book in books %}
+    <tr>
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.barcode}}</td>
+        <td>{{book.storage_place}}</td>
+        <td>{{book.price}}</td>
+        <td>{{book.bookline_price}}</td>
+        <td>{{book.admin_link}}</td>
+        <td>{{book.bookline_link}}</td>
+    </tr>
+    {% endfor %}
+</table></div>
+{% endblock content %}
