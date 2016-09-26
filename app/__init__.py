@@ -6,16 +6,23 @@ from peewee import *
 db = SqliteDatabase('users.db')
 
 from app.mod_auth.models import *
-from app.mod_xls.models import *
+from app.mod_rfid.models import *
 
-users = [{"name": "admin", "password": "admin"}, {"name": "admin2", "password": "admin2"}]
+users = [{"name": "admin", "password": "admin"}]
+students = [
+    {"name": "Al", "rfid_id": "egy"}, {"name": "Peggy", "rfid_id": "kettő"},
+    {"name": "Kelly", "rfid_id": "három"}, {"name": "Bud", "rfid_id": "négy"},
+    {"name": "Bruno", "rfid_id": "öt"}
+    ]
+
 db.connect()
-db.drop_tables([Visitor, Book], safe=True)
-db.create_tables([Visitor, Book], safe=True)
+db.drop_tables([Admin, Student], safe=True)
+db.create_tables([Admin, Student], safe=True)
 
 
 with db.atomic():
-    Visitor.insert_many(users).execute()
+    Admin.insert_many(users).execute()
+    Student.insert_many(students).execute()
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -29,10 +36,6 @@ from app.mod_auth.controllers import mod_auth as auth_module
 
 app.register_blueprint(auth_module)
 
-from app.mod_xls.controllers import mod_xls as xls_module
+from app.mod_rfid.controllers import mod_rfid as rfid_module
 
-app.register_blueprint(xls_module)
-
-from app.mod_bulk.controllers import mod_bulk as bulk_module
-
-app.register_blueprint(bulk_module)
+app.register_blueprint(rfid_module)

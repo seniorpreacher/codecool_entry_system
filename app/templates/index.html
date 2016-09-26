@@ -11,16 +11,11 @@
         <th>{{title}}</th>
         {% endfor %}
     </tr></thead>
-    {% for book in books %}
+    {% for student in students %}
     <tr>
-        <td>{{book.author}}</td>
-        <td>{{book.title}}</td>
-        <td>{{book.barcode}}</td>
-        <td>{{book.storage_place}}</td>
-        <td>{{book.price}}</td>
-        <td>{{book.bookline_price}}</td>
-        <td>{{book.admin_link}}</td>
-        <td>{{book.bookline_link}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.rfid_id}}</td>
+        <td>{{student.last_seen}}</td>
     </tr>
     {% endfor %}
 </table></div>

@@ -2,7 +2,7 @@ from flask import Blueprint, request, render_template, flash, g, session, redire
 from werkzeug import check_password_hash, generate_password_hash
 from app import db
 from app.mod_auth.forms import LoginForm
-from app.mod_auth.models import User
+from app.mod_auth.models import Admin
 
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
