@@ -53,8 +53,9 @@ class Device():
             device.ungrab()
             print('Quitting.')
 
-    @classmethod
-    def handle_new_entries(cls, tag):
+    @staticmethod
+    def handle_new_entries(tag):
+        """ Records new entries into the Reads table. Stores a timestamp and the corresponding student instance. """
         try:
             student = Student.get(Student.rfid_id == tag)
             student.last_seen = datetime.datetime.now()

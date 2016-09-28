@@ -22,7 +22,6 @@
 {% block title %}Index{% endblock title %}
 {% block head %}
     {{ super() }}
-    <!-- <link href="signin.css" rel="stylesheet"> -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
 {% endblock head %}
 
@@ -36,30 +35,32 @@
 
 <!-------------------------------------------------------------------------------------------------------------------->
 
-    {% with errors = get_flashed_messages(category_filter=["error"]) %}
-    {% if errors %}
-    <div>
-    {% for error in errors %}
-    {{ error }}<br>
-    {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
-
-    {% if form.errors %}
-    <div>
-    {% for field, error in form.errors.items() %}
-    {% for e in error %}
-    {{ e }}<br>
-    {% endfor %}
-    {% endfor %}
-    </div>
-    {% endif %}
 
 <!-------------------------------------------------------------------------------------------------------------------->
 
     <form class="form-signin" method="POST" action="." accept-charset="UTF-8" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
+
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+            <div>
+            {% for error in errors %}
+            {{ error }}<br>
+            {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            {% if form.errors %}
+            <div>
+            {% for field, error in form.errors.items() %}
+            {% for e in error %}
+            {{ e }}<br>
+            {% endfor %}
+            {% endfor %}
+            </div>
+            {% endif %}
+
         {{ form.csrf_token }}
         {{ render_field(form.name, placeholder="Username", autofocus="") }}
         {{ render_field(form.password, placeholder="Password") }}

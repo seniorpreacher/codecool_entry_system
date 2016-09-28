@@ -3,7 +3,6 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 from app.mod_auth.forms import LoginForm
 from app.mod_auth.models import Admin
-# from flask_wtf import login_required
 
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 

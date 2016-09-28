@@ -1,4 +1,3 @@
-# Import flask and template operators
 from flask import Flask, render_template
 import sqlite3
 from peewee import *
@@ -14,7 +13,7 @@ students = [
     {"name": "Al", "rfid_id": "egy"}, {"name": "Peggy", "rfid_id": "kettő"},
     {"name": "Kelly", "rfid_id": "három"}, {"name": "Bud", "rfid_id": "négy"},
     {"name": "Bruno", "rfid_id": "öt"}, {"name": "Marcy D'Arcy", "rfid_id": "0269792673"},
-    {"name": "Unknown RFID ID", "rfid_id": ""}
+    {"name": "Unknown RFID ID", "rfid_id": ""}, {"name": "Anna Kertész", "rfid_id": "0269794721"}
     ]
 
 db.connect()
