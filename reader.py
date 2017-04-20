@@ -67,4 +67,5 @@ class Device():
         finally:
             Reads.create(time=datetime.datetime.now(), student=student)
 
-Device.run()
+#Device.run()
+Device.list()

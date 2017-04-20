@@ -1,0 +1,17 @@
+click==6.7
+Flask==0.12
+Flask-Login==0.4.0
+Flask-WTF==0.14.2
+hidapi==0.7.99.post20
+itsdangerous==0.24
+Jinja2==2.9.5
+MarkupSafe==0.23
+pbr==1.10.0
+peewee==2.8.5
+six==1.10.0
+stevedore==1.20.0
+virtualenv==15.1.0
+virtualenv-clone==0.2.6
+virtualenvwrapper==4.7.2
+Werkzeug==0.11.15
+WTForms==2.1

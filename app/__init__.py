@@ -10,20 +10,24 @@ from app.mod_rfid.models import *
 
 users = [{"name": "admin", "password": "admin"}]
 students = [
-    {"name": "Al", "rfid_id": "egy"}, {"name": "Peggy", "rfid_id": "kettő"},
-    {"name": "Kelly", "rfid_id": "három"}, {"name": "Bud", "rfid_id": "négy"},
-    {"name": "Bruno", "rfid_id": "öt"}, {"name": "Marcy D'Arcy", "rfid_id": "0269792673"},
-    {"name": "Unknown RFID ID", "rfid_id": ""}, {"name": "Anna Kertész", "rfid_id": "0269794721"}
+    {"name": "Daniel Salamon", "rfid_id": "0270318977"},
+    {"name": "Peggy", "rfid_id": "kettő"},
+    {"name": "Kelly", "rfid_id": "három"},
+    {"name": "Bud", "rfid_id": "négy"},
+    {"name": "Bruno", "rfid_id": "öt"},
+    {"name": "Marcy D'Arcy", "rfid_id": "0269792673"},
+    {"name": "Unknown RFID ID", "rfid_id": ""},
+    {"name": "Anna Kertész", "rfid_id": "0269794721"}
     ]
 
 db.connect()
-db.drop_tables([Admin, Student, Reads], safe=True)
-db.create_tables([Admin, Student, Reads], safe=True)
+#db.drop_tables([Admin, Student, Reads], safe=True)
+#db.create_tables([Admin, Student, Reads], safe=True)
 
 
-with db.atomic():
-    Admin.insert_many(users).execute()
-    Student.insert_many(students).execute()
+#with db.atomic():
+#    Admin.insert_many(users).execute()
+#    Student.insert_many(students).execute()
 
 app = Flask(__name__)
 app.config.from_object('config')
